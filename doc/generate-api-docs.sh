@@ -55,6 +55,6 @@ for LIB in $LIBS_SORTED; do
     if FEATURES="$(cargo read-manifest|jq -r '.metadata.docs.rs.features | join(",")' 2> /dev/null)"; then
         ARGS="--features $FEATURES"
     fi
-    cargo doc --lib $ARGS
+    cargo doc --no-deps --lib $ARGS
     cd -
 done
